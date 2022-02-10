@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router} from 'react-router-dom'
+import {StyledEngineProvider} from '@mui/material/styles'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {GlobalStyles} from 'lib/ui/theme/GlobalStyles'
+import ScrollOnNav from 'lib/ScrollOnNav'
+import ThemeProvider from 'lib/ui/theme/ThemeProvider'
+
+import Routes from 'routes'
+
+export default function App() {
+    return (
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider>
+                <GlobalStyles />
+                <Router>
+                    <Routes />
+                    <ScrollOnNav />
+                </Router>
+            </ThemeProvider>
+        </StyledEngineProvider>
+    )
 }
-
-export default App;

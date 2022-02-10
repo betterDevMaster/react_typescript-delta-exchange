@@ -1,0 +1,94 @@
+import red from '@mui/material/colors/red'
+import {createTheme} from '@mui/material/styles'
+
+export const breakpoints = {
+    xs: '320px',
+    sm: '600px',
+    md: '960px',
+    lg: '1280px',
+    xl: '1920px',
+}
+
+export const colors = {
+    primary: '#3490DC',
+    secondary: '#2066a7',
+    success: '#20A746',
+    border: '#a0a9b0',
+    info: '#51EA0A',
+    error: red[500],
+    warning: '#ffc107',
+    text: {
+        muted: '#606F7B',
+    },
+    accent: '#a72020',
+    gray: '#f1f1f1',
+    gray100: '#a7a7a7',
+    gray200: '#838383',
+    gray300: '#dfdfdf',
+    gray400: '#4f4f4f',
+    grey500: '#C4C4C4',
+    blue: '#2794d2',
+    disabled: '#c4c4c4',
+    input: {
+        background: '#f2f5f9',
+    },
+}
+
+export const spacing = Array(60)
+    .fill(4)
+    .map((base, idx) => `${base * idx}px`)
+
+export const muiTheme = createTheme({
+    palette: {
+        primary: {
+            main: colors.primary,
+        },
+        secondary: {
+            main: colors.secondary,
+        },
+    },
+
+    typography: {
+        fontFamily: [
+            'Rubik',
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+    },
+})
+
+export type MuiThemeOptions = {
+    secondaryColor: string
+}
+
+export const createMuiDarkTheme = (options: MuiThemeOptions) =>
+    createTheme({
+        palette: {
+            primary: {
+                main: '#FFFFFF',
+            },
+            secondary: {
+                main: options.secondaryColor || colors.secondary,
+            },
+        },
+    })
+
+export const createMuiLightTheme = (options: MuiThemeOptions) =>
+    createTheme({
+        palette: {
+            primary: {
+                main: colors.primary,
+            },
+            secondary: {
+                main: options.secondaryColor || colors.secondary,
+            },
+        },
+    })
